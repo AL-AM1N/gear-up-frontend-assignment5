@@ -95,7 +95,7 @@ export default function GearDetailPage({
             <Badge variant="secondary" className="bg-white/90 dark:bg-white/10 backdrop-blur">
               {gear.category?.name ?? "Gear"}
             </Badge>
-            {gear.isAvailable ? (
+            {gear.isAvailable && gear.quantity > 0 ? (
               <Badge variant="success">Available</Badge>
             ) : (
               <Badge variant="destructive">Unavailable</Badge>
