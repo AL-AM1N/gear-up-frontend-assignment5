@@ -10,7 +10,7 @@ export const getMe = async () => {
     return { success: false, message: "User not logged in!" };
   }
 
-  const res = await fetch(`${process.env.BACKEND_API_URL}/api/auth/me`, {
+  const res = await fetch(`${process.env.BACKEND_API_URL}/auth/me`, {
     headers: { Cookie: `accessToken=${accessToken}` },
     cache: "no-store",
   });
