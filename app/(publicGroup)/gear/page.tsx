@@ -44,6 +44,7 @@ function GearBrowser() {
   const updateParams = useCallback(
     (updates: Record<string, string | null>) => {
       const params = new URLSearchParams(searchParams.toString());
+      const isPageUpdate = updates.page != null;
       Object.entries(updates).forEach(([key, value]) => {
         if (value === null || value === "") {
           params.delete(key);
@@ -51,7 +52,9 @@ function GearBrowser() {
           params.set(key, value);
         }
       });
-      params.delete("page");
+      if (!isPageUpdate) {
+        params.delete("page");
+      }
       router.replace(`${pathname}?${params.toString()}`);
     },
     [router, pathname, searchParams],
